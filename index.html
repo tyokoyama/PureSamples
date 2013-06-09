@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="//yui.yahooapis.com/pure/0.1.0/pure-min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Todoサンプル</title>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+	<script type="text/javascript" src="js/controllers.js"></script>
+</head>
+<body>
+	<div class="pure-menu pure-menu-open pure-menu-horizontal">
+		<a href="#" class="pure-menu-heading">サンプルTodo</a>
+		<ul>
+			<li class="pure-menu-selected"><a href="#">Home</a></li>
+			<li><a href="#">メニュー１</a></li>
+			<li><a href="#">Menu2</a></li>
+			<li><a href="#">Menu3</a></li>
+			<li><a href="#">Menu4</a></li>
+		</ul>
+	</div>
+	<div class="pure-u" id="main">
+		<div class="content">
+			<h2>Todo</h2>
+			<div ng-controller="TodoCtrl" class="pure-g-r layout-item">
+				<div class="pure-u-1-2">
+					<form ng-submit="addTodo()" class="pure-form" style="width: 50%;">
+						<input type="text" ng-model="todoText" placeholder="add new todo here" />
+						<input type="submit" value="add" class="pure-button pure-button-primary"/>
+					</form>
+				</div>
+				<div class="pure-u-1-4">
+					{{remaining()}} of {{todos.length}} remaining.
+					<ul>
+						<li ng-repeat="todo in todos">
+							<input class="pure-checkbox" type="checkbox" ng-model="todo.done" />
+							<span class="todo{{todo.done}}">{{todo.text}}</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
